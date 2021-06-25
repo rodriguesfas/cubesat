@@ -40,15 +40,15 @@ void loop()
 
         JSONencoder["sensorType"] = "Temperature";
 
-        JsonArray &values = JSONencoder.createNestedArray("values"); //JSON array
-        values.add(20);                                              //Add value to array
-        values.add(21);                                              //Add value to array
-        values.add(23);                                              //Add value to array
+        JsonArray &values = JSONencoder.createNestedArray("values");
+        values.add(20);
+        values.add(21);
+        values.add(23);
 
-        JsonArray &timestamps = JSONencoder.createNestedArray("timestamps"); //JSON array
-        timestamps.add("10:10");                                             //Add value to array
-        timestamps.add("10:20");                                             //Add value to array
-        timestamps.add("10:30");                                             //Add value to array
+        JsonArray &timestamps = JSONencoder.createNestedArray("timestamps");
+        timestamps.add("10:10");
+        timestamps.add("10:20");
+        timestamps.add("10:30");
 
         char JSONmessageBuffer[300];
         JSONencoder.prettyPrintTo(JSONmessageBuffer, sizeof(JSONmessageBuffer));
@@ -58,7 +58,7 @@ void loop()
         HTTPClient http; //Declare object of class HTTPClient
 
         http.begin(client, "http://3464c54dce1f.ngrok.io/postjson"); //Specify request destination
-        http.addHeader("Content-Type", "application/json");      //Specify content-type header
+        http.addHeader("Content-Type", "application/json");          //Specify content-type header
 
         int httpCode = http.POST(JSONmessageBuffer); //Send the request
         String payload = http.getString();           //Get the response payload
@@ -66,11 +66,9 @@ void loop()
         Serial.println(httpCode); //Print HTTP return code
         Serial.println(payload);  //Print request response payload
 
-        http.end(); //Close connection
-    }
+        http.end();
     else
     {
-
         Serial.println("Error in WiFi connection");
     }
 

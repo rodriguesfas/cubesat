@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# TODO: https://realpython.com/introduction-to-mongodb-and-python/
+
 import configparser
 
 from flask import Flask

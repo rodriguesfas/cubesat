@@ -9,7 +9,7 @@ My CubeSat project baseline.
 - [Ubuntu 20.04](#)
 - [Python 3](#).
 - [Pip 3](#).
-- [MongoDB Compass Community](https://www.mongodb.com/) to save data.
+- [MongoDB Compass Community](https://www.mongodb.com/) to save data or [RoboMongo](https://robomongo.org/).
 - [NGrok](https://ngrok.com/) for public url.
 
 <hr/>
@@ -27,7 +27,7 @@ Application web python monitoring dashboard.
 ### Install requirements
 
     pip install flask
-    pip install mongodb
+    pip install pymongo
 
 ### Run 
 
@@ -35,7 +35,7 @@ Application web python monitoring dashboard.
 
 ### Tests
 
-Used client [Postman](https://www.postman.com/) to tests web server.
+Used client [Postman](https://www.postman.com/) to tests web server [collection](https://www.getpostman.com/collections/5fe6061ccac8ff3ac443).
 
 <hr/>
 
