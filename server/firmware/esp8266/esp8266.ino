@@ -15,8 +15,8 @@ WebSocketsServer webSocket = WebSocketsServer(81); // Recebe dados do cliente
 Neotimer mytimer = Neotimer(10000); // Intervalo de 10 segundos para envio dos dados do sensor
 
 // Autenticação wi-fi - Coloque aqui a sua configuração
-const char* ssid     = "xxxx";
-const char* password = "xxxx";
+const char* ssid     = "brisa-679421";
+const char* password = "84bmey4i";
 
 const int pinLED = D4;
 String tempString; // Temperatura convertida para String
@@ -58,12 +58,15 @@ void setup() {
   Serial.begin(9600);
   pinMode(pinLED, OUTPUT);
   digitalWrite(pinLED, OFF);
+
   // Conexões wi-fi e websocket
   WiFi.begin(ssid, password);
+  
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(". ");
     delay(100);
   }
+  
   Serial.println(WiFi.localIP());
   webSocket.begin();
   webSocket.onEvent(webSocketEvent);
@@ -74,33 +77,8 @@ void loop() {
   webSocket.loop();
 
   // Envio periódico dos dados do sensor de temperatura para o cliente
-  if (mytimer.repeat()) {
-    tempString = readTemperature();
-    webSocket.sendTXT(0, tempString);
+  if (mytimer.repeat()) {;
+    webSocket.sendTXT(0, "32");
   }
 }
 
-// Leitura e cálculo da temperatura pelo termistor
-double readTemperature() {
-   
-  // Código extraído do tutorial 'Thermistor Interfacing with NodeMCU' disponível em:
-  // https://www.electronicwings.com/nodemcu/thermistor-interfacing-with-nodemcu
-
-  const double VCC = 3.3; // NodeMCU on board 3.3v vcc
-  const double R2 = 10000; // 10k ohm series resistor
-  const double adc_resolution = 1023; // 10-bit adc
-  const double A = 0.001129148; // thermistor equation parameters
-  const double B = 0.000234125;
-  const double C = 0.0000000876741;
-  double Vout, Rth, temperature, adc_value;
-
-  adc_value = analogRead(A0);
-  Vout = (adc_value * VCC) / adc_resolution;
-  Rth = (VCC * R2 / Vout) - R2;
-
-  temperature = (1 / (A + (B * log(Rth)) + (C * pow((log(Rth)), 3))));  // Temperature in kelvin
-  temperature = temperature - 273.15;  // Temperature in degree celsius
-  delay(500);
-  return (temperature);
-
-}
