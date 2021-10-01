@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <title>Dashboard - CubeSat</title>
+
+    <!-- Simple bar CSS -->
+    <link rel="stylesheet" href="themes/dark/css/simplebar.css">
+
+    <!-- Fonts CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="themes/dark/css/feather.css">
+    <link rel="stylesheet" href="themes/dark/css/select2.css">
+    <link rel="stylesheet" href="themes/dark/css/dropzone.css">
+    <link rel="stylesheet" href="themes/dark/css/uppy.min.css">
+    <link rel="stylesheet" href="themes/dark/css/jquery.steps.css">
+    <link rel="stylesheet" href="themes/dark/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="themes/dark/css/quill.snow.css">
+
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href="themes/dark/css/daterangepicker.css">
+
+    <!-- App CSS -->
+    <link rel="stylesheet" href="themes/dark/css/app-light.css" id="lightTheme" disabled>
+    <link rel="stylesheet" href="themes/dark/css/app-dark.css" id="darkTheme">
+</head>
+
+<body class="vertical  dark  ">
+    <div class="wrapper">
+        <nav class="topnav navbar navbar-light">
+            <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+                <i class="fe fe-menu navbar-toggler-icon"></i>
+            </button>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="dark">
+                        <i class="fe fe-sun fe-16"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
+                        <span class="fe fe-grid fe-16"></span>
+                    </a>
+                </li>
+                <li class="nav-item nav-notif">
+                    <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
+                        <span class="fe fe-bell fe-16"></span>
+                        <span class="dot dot-md bg-success"></span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="avatar avatar-sm mt-2">
+                            <img src="themes/dark/assets/avatars/face-1.jpg" alt="..."
+                                class="avatar-img rounded-circle">
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Activities</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+            <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
+                <i class="fe fe-x"><span class="sr-only"></span></i>
+            </a>
+            <nav class="vertnav navbar navbar-light">
+                <!-- nav bar -->
+                <div class="w-100 mb-4 d-flex">
+                    <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="#">
+                        <img src="themes/dark/assets/images/logo.png" height="40px" name="logo" id="logo">
+                    </a>
+                </div>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item dropdown">
+                        <a href="#dashboard" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle nav-link">
+                            <i class="fe fe-home fe-16"></i>
+                            <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="text-muted nav-heading mt-4 mb-1">
+                    <span>Configuration</span>
+                </p>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item dropdown">
+                        <a href="#ui-elements" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle nav-link">
+                            <i class="fe fe-box fe-16"></i>
+                            <span class="ml-3 item-text">Account</span>
+                        </a>
+                        <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Profile</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="#">
+                            <i class="fe fe-layers fe-16"></i>
+                            <span class="ml-3 item-text">Logs</span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="text-muted nav-heading mt-4 mb-1">
+                    <span>Documentation</span>
+                </p>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="#">
+                            <i class="fe fe-help-circle fe-16"></i>
+                            <span class="ml-3 item-text">Getting Start</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <main role="main" class="main-content">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="row align-items-center mb-2">
+                            <div class="col">
+                                <h2 class="h5 page-title">Dashboard</h2>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <strong><i class="fas fa-lightbulb"></i> Situação do
+                                                LED</strong>
+                                        </h5>
+                                        <button id="led-status" type="button"
+                                            class="btn btn-lg btn-secondary">OFF</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="card text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <strong><i class="fas fa-thermometer-half"></i>Temp</strong>
+                                        </h5>
+                                        <h2><span id="temperature">0</span> °C</h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br/><br/><br/>
+
+                            <div class="col-sm-6">
+                                <div class="card text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><strong><i class="fas fa-history"></i> Logs</strong></h5>
+                                        <textarea id="log" class="form-control text-white" rows="6" readonly></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog"
+                aria-labelledby="defaultModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="list-group list-group-flush my-n3">
+                                <div class="list-group-item bg-transparent">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <span class="fe fe-box fe-24"></span>
+                                        </div>
+                                        <div class="col">
+                                            <small><strong>Package has uploaded successfull</strong></small>
+                                            <div class="my-0 text-muted small">Package is zipped and uploaded</div>
+                                            <small class="badge badge-pill badge-light text-muted">1m ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item bg-transparent">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <span class="fe fe-download fe-24"></span>
+                                        </div>
+                                        <div class="col">
+                                            <small><strong>Widgets are updated successfull</strong></small>
+                                            <div class="my-0 text-muted small">Just create new layout Index, form, table
+                                            </div>
+                                            <small class="badge badge-pill badge-light text-muted">2m ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item bg-transparent">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <span class="fe fe-inbox fe-24"></span>
+                                        </div>
+                                        <div class="col">
+                                            <small><strong>Notifications have been sent</strong></small>
+                                            <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo
+                                            </div>
+                                            <small class="badge badge-pill badge-light text-muted">30m ago</small>
+                                        </div>
+                                    </div> <!-- / .row -->
+                                </div>
+                                <div class="list-group-item bg-transparent">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <span class="fe fe-link fe-24"></span>
+                                        </div>
+                                        <div class="col">
+                                            <small><strong>Link was attached to menu</strong></small>
+                                            <div class="my-0 text-muted small">New layout has been attached to the menu
+                                            </div>
+                                            <small class="badge badge-pill badge-light text-muted">1h ago</small>
+                                        </div>
+                                    </div>
+                                </div> <!-- / .row -->
+                            </div> <!-- / .list-group -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear
+                                All</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog"
+                aria-labelledby="defaultModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body px-5">
+                            <div class="row align-items-center">
+                                <div class="col-6 text-center">
+                                    <div class="squircle bg-success justify-content-center">
+                                        <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+                                    </div>
+                                    <p>Control area</p>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <div class="squircle bg-primary justify-content-center">
+                                        <i class="fe fe-activity fe-32 align-self-center text-white"></i>
+                                    </div>
+                                    <p>Activity</p>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-6 text-center">
+                                    <div class="squircle bg-primary justify-content-center">
+                                        <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
+                                    </div>
+                                    <p>Droplet</p>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <div class="squircle bg-primary justify-content-center">
+                                        <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
+                                    </div>
+                                    <p>Upload</p>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-6 text-center">
+                                    <div class="squircle bg-primary justify-content-center">
+                                        <i class="fe fe-users fe-32 align-self-center text-white"></i>
+                                    </div>
+                                    <p>Users</p>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <div class="squircle bg-primary justify-content-center">
+                                        <i class="fe fe-settings fe-32 align-self-center text-white"></i>
+                                    </div>
+                                    <p>Settings</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="themes/dark/js/jquery.min.js"></script>
+    <script src="themes/dark/js/popper.min.js"></script>
+    <script src="themes/dark/js/moment.min.js"></script>
+    <script src="themes/dark/js/bootstrap.min.js"></script>
+    <script src="themes/dark/js/simplebar.min.js"></script>
+    <script src='themes/dark/js/daterangepicker.js'></script>
+    <script src='themes/dark/js/jquery.stickOnScroll.js'></script>
+    <script src="themes/dark/js/tinycolor-min.js"></script>
+    <script src="themes/dark/js/config.js"></script>
+    <script src="themes/dark/js/d3.min.js"></script>
+    <script src="themes/dark/js/topojson.min.js"></script>
+    <script src="themes/dark/js/datamaps.all.min.js"></script>
+    <script src="themes/dark/js/datamaps-zoomto.js"></script>
+    <script src="themes/dark/js/datamaps.custom.js"></script>
+    <script src="themes/dark/js/Chart.min.js"></script>
+    <script>
+        /* defind global options */
+        Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
+        Chart.defaults.global.defaultFontColor = colors.mutedColor;
+    </script>
+    <script src="themes/dark/js/gauge.min.js"></script>
+    <script src="themes/dark/js/jquery.sparkline.min.js"></script>
+    <script src="themes/dark/js/apexcharts.min.js"></script>
+    <script src="themes/dark/js/apexcharts.custom.js"></script>
+    <script src='themes/dark/js/jquery.mask.min.js'></script>
+    <script src='themes/dark/js/select2.min.js'></script>
+    <script src='themes/dark/js/jquery.steps.min.js'></script>
+    <script src='themes/dark/js/jquery.validate.min.js'></script>
+    <script src='themes/dark/js/jquery.timepicker.js'></script>
+    <script src='themes/dark/js/dropzone.min.js'></script>
+    <script src='themes/dark/js/uppy.min.js'></script>
+    <script src='themes/dark/js/quill.min.js'></script>
+    <script src="themes/dark/js/apps.js"></script>
+
+    <script src="assets/js/index.js" type="text/javascript"></script>
+
+    <script>
+        var mode = localStorage.getItem('mode');
+
+        if (mode == 'dark') {
+            document.getElementById('logo').src = "themes/dark/assets/images/logo-white.png";
+        } else {
+            document.getElementById('logo').src = "themes/dark/assets/images/logo.png";
+        }
+    </script>
+</body>
+
+</html>
